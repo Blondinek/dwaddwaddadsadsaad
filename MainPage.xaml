@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App4.MainPage"
+             x:Name="thisPage"
+    BindingContext="{x:Reference thisPage}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Entry Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" BackgroundColor="Beige"
+               Placeholder="Wpisz tu cos" x:Name="NoteText" Text="{Binding Note}"/>
+
+        <Button Grid.Row="3" Grid.Column="1" Text="Zapisz" Clicked="SaveNote"/>
+        <Button Grid.Row="3" Grid.Column="2" Text="Usun" Clicked="DelNote"/>
+
+        <CollectionView x:Name="NoteList" SelectionMode="Multiple" ItemsSource="{Binding AllNotes}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" FontSize="Title"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </Grid>
+
+</ContentPage>
